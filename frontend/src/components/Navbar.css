@@ -1,0 +1,146 @@
+.navbar {
+  position: fixed;        
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 72px;           
+  padding: 0 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #ffffff;
+  z-index: 100;
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.08);
+}
+
+
+.nav-logo {
+  font-weight: 700;
+  font-size: 1.3rem;
+  color: #4c1d95;
+}
+
+
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 20px;
+}
+
+.nav-links li {
+  cursor: pointer;
+  font-size: 0.95rem;
+  color: #4b5563;
+  transition: color 0.2s;
+}
+
+.nav-links li:hover {
+  color: #4c1d95;
+}
+
+
+.nav-login-btn {
+  padding: 8px 18px;
+  border-radius: 999px;
+  border: none;
+  background: #4c1d95;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 6px 18px rgba(76, 29, 149, 0.35);
+  transition: transform 0.15s, box-shadow 0.15s, background 0.15s;
+}
+
+.nav-login-btn:hover {
+  background: #5b21b6;
+  transform: translateY(-1px);
+  box-shadow: 0 8px 20px rgba(76, 29, 149, 0.45);
+}
+
+/* ---------- HAMBURGER ---------- */
+
+.nav-toggle {
+  display: none;          
+  flex-direction: column;
+  justify-content: center;
+  gap: 4px;
+  width: 28px;
+  height: 28px;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+.nav-toggle span {
+  display: block;
+  height: 2px;
+  width: 100%;
+  background: #111827;
+  border-radius: 999px;
+  transition: transform 0.2s, opacity 0.2s;
+}
+
+
+.nav-toggle.open span:nth-child(1) {
+  transform: translateY(6px) rotate(45deg);
+}
+
+.nav-toggle.open span:nth-child(2) {
+  opacity: 0;
+}
+
+.nav-toggle.open span:nth-child(3) {
+  transform: translateY(-6px) rotate(-45deg);
+}
+
+/* ---------- RESPONSIVE MOBILE ---------- */
+
+@media (max-width: 768px) {
+  .navbar {
+    padding: 0 16px;
+  }
+
+  
+  .nav-right {
+    position: absolute;
+    top: 72px;              
+    right: 0;
+    left: 0;
+    padding: 12px 16px 16px;
+    background: #ffffff;
+    box-shadow: 0 10px 30px rgba(15, 23, 42, 0.12);
+    border-radius: 0 0 16px 16px;
+    display: none;          
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .nav-right.show {
+    display: flex;          
+  }
+
+  .nav-links {
+    flex-direction: column;
+    width: 100%;
+    gap: 10px;
+  }
+
+  .nav-login-btn {
+    width: 100%;
+    text-align: center;
+  }
+
+  
+  .nav-toggle {
+    display: flex;
+  }
+}
