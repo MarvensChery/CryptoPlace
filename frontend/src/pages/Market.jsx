@@ -3,19 +3,20 @@
 import { useEffect, useState } from "react";
 import "./Market.css";
 
+import { useNavigate } from "react-router-dom";
+
 function Market() {
-  const [globalData, setGlobalData] = useState(null);
   const [cryptos, setCryptos] = useState([]);
   const [error, setError] = useState("");
   const [search, setSearch] = useState("");
   const [activeTab, setActiveTab] = useState("popular"); 
-
+  const navigate = useNavigate();
   useEffect(() => {
     fetch("http://localhost:5000/api/market-info")
       .then((res) => res.json())
       .then((data) => {
         if (data.global && Array.isArray(data.coins)) {
-          setGlobalData(data.global);
+         
           setCryptos(data.coins);
           setError("");
         } else {
@@ -27,6 +28,11 @@ function Market() {
       });
   }, []);
 
+  const goToPrediction = (coin) => {
+  navigate(`/predict/${coin.id}`, { state: { coin } });
+  };
+
+
   const currency = new Intl.NumberFormat("en-US", {
     style: "currency",
     currency: "USD",
@@ -37,18 +43,6 @@ function Market() {
     `${(v ?? 0).toFixed(2)} %`;
 
   
-  const topByMarketCap = [...cryptos].sort(
-    (a, b) => (b.market_cap || 0) - (a.market_cap || 0)
-  );
-  const trendCoins = topByMarketCap.slice(0, 3); 
-
-  const topGainers = [...cryptos]
-    .filter((c) => c.price_change_percentage_24h != null)
-    .sort(
-      (a, b) =>
-        b.price_change_percentage_24h - a.price_change_percentage_24h
-    )
-    .slice(0, 3); 
   
   let tableCoins = [...cryptos];
 
@@ -84,6 +78,12 @@ function Market() {
   return (
     
     <div className="market-page">
+       <>
+      <>
+      
+      </>
+      <div className="market-page">...</div>
+    </>
       
         <section className="title-section">
         <h1 className="market-title">Today’s cryptocurrency prices</h1>
@@ -95,107 +95,7 @@ function Market() {
      
 
       
-      <section className="market-cards">
-        
-    <div className="market-card big-card">
-    <div className="big-card-header">
-        <span className="card-label">Global market cap</span>
-        {globalData && (
-        <span className="market-cap-badge">
-            {globalData.active_cryptocurrencies?.toLocaleString()} coins
-        </span>
-        )}
-    </div>
-
-    <div className="card-value-highlight">
-        <div className="card-value">
-        {globalData
-            ? currency.format(globalData.total_market_cap?.usd || 0)
-            : "—"}
-        </div>
-        <p className="card-helper-text">
-        Total value of all listed cryptocurrencies in USD.
-        </p>
-    </div>
-
-    <div className="card-footer">
-        <span className="card-footer-label">24H change</span>
-        <span
-        className={
-            "card-change-pill " +
-            ((globalData?.market_cap_change_percentage_24h_usd || 0) >= 0
-            ? "pill-positive"
-            : "pill-negative")
-        }
-        >
-        {globalData
-            ? formatPercent(globalData.market_cap_change_percentage_24h_usd)
-            : "+ ? %"}
-        </span>
-    </div>
-    </div>
-
-
       
-<div className="market-card">
-  <span className="card-label">Trend • 24h</span>
-  <ul className="card-list">
-    {trendCoins.length > 0 ? (
-      trendCoins.map((coin) => (
-        <li className="trend-item" key={coin.id}>
-          {coin.image && (
-            <img
-              src={coin.image}
-              alt={coin.name}
-              className="coin-icon-trend"
-            />
-          )}
-          <div className="trend-info">
-            <span className="coin-name">{coin.name}</span>
-            <span
-              className={
-                (coin.price_change_percentage_24h || 0) >= 0
-                  ? "trend-positive"
-                  : "trend-negative"
-              }
-            >
-              {formatPercent(coin.price_change_percentage_24h || 0)}
-            </span>
-          </div>
-        </li>
-      ))
-    ) : (
-      <li>Loading...</li>
-    )}
-  </ul>
-</div>
-
-
-<div className="market-card">
-  <span className="card-label">Top performers • 24h</span>
-  <ul className="card-list">
-    {topGainers.length > 0 ? (
-      topGainers.map((coin) => (
-        <li className="trend-item" key={coin.id}>
-            {coin.image && (
-            <img
-              src={coin.image}
-              alt={coin.name}
-              className="coin-icon-trend"
-            />
-          )}
-          <span className="coin-name">{coin.name}</span>
-          <span className="trend-positive">
-            {formatPercent(coin.price_change_percentage_24h || 0)}
-          </span>
-        </li>
-      ))
-    ) : (
-      <li>Loading...</li>
-    )}
-  </ul>
-</div>
-      </section>
 
       
       <section className="market-toolbar">
@@ -308,7 +208,9 @@ function Market() {
                   </td>
                   <td className="action-buttons">
                     <button className="btn-buy">Buy</button>
-                    <button className="btn-predict">See Prediction</button>
+                    <button className="btn-predict" onClick={() => goToPrediction(coin)}>
+                      See Prediction
+                    </button>
                     </td>
                 </tr>
               ))

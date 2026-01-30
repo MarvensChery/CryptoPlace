@@ -1,34 +1,38 @@
-// frontend/src/components/Navbar.jsx
-import { useState } from "react";
+// src/components/Navbar.jsx
+import { Link } from "react-router-dom";
 import "./Navbar.css";
+import logo from "../assets/1erhibo.png";
 
-function Navbar() {
-  const [isOpen, setIsOpen] = useState(false);
-
+function Navbar({ className = "" }) {
   return (
-    <nav className="navbar">
-      <div className="nav-logo">CryptoPlace</div>
+    <nav className={`navbar ${className}`}>
+      <div className="navbar-inner">
+        {/* Gauche : logo */}
+        <div className="nav-left">
+          <Link to="/" className="nav-logo">
+            <img src={logo} alt="CryptoSight logo" className="nav-logo-img" />
+          </Link>
+        </div>
 
-    
-      <button
-        className={`nav-toggle ${isOpen ? "open" : ""}`}
-        onClick={() => setIsOpen(!isOpen)}
-        aria-label="Toggle navigation"
-      >
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
-
-      
-      <div className={`nav-right ${isOpen ? "show" : ""}`}>
+        {/* Centre : liens */}
         <ul className="nav-links">
-          <li>Home</li>
-          <li>Market</li>
-          <li>Community</li>
-          <li>About</li>
+          <li>
+            <Link to="/">Home</Link>
+          </li>
+          <li>
+            <Link to="/market">Market</Link>
+          </li>
         </ul>
-        <button className="nav-login-btn">Log in</button>
+
+        {/* Droite : actions */}
+        <div className="nav-right">
+          <button className="nav-text-btn">
+            Login
+          </button>
+          <Link to="/market" className="nav-cta-btn">
+            Predire
+          </Link>
+        </div>
       </div>
     </nav>
   );
