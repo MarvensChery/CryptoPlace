@@ -1,0 +1,263 @@
+/* predictReddit.css */
+/* Scoped to avoid breaking other pages */
+.reddit-predict-page {
+	max-width: 1100px;
+	margin: 0 auto;
+	padding: 28px 18px 60px 18px;
+}
+
+/* Header */
+.reddit-predict-header {
+	text-align: center;
+	margin-bottom: 18px;
+}
+
+.reddit-predict-title {
+	font-size: 2rem;
+	line-height: 1.15;
+	margin: 0;
+	letter-spacing: -0.02em;
+}
+
+.reddit-predict-subtitle {
+	margin: 10px 0 0 0;
+	opacity: 0.75;
+	font-size: 1rem;
+}
+
+/* Coin hero (same style as Predict hero) */
+.reddit-coin-hero {
+	margin: 18px auto 22px auto;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 12px;
+	padding: 14px 16px;
+	border-radius: 16px;
+	border: 1px solid rgba(255, 255, 255, 0.08);
+	background: rgba(255, 255, 255, 0.04);
+	backdrop-filter: blur(10px);
+}
+
+.reddit-coin-hero img {
+	width: 38px;
+	height: 38px;
+	border-radius: 50%;
+}
+
+.reddit-coin-name {
+	font-size: 1.15rem;
+	font-weight: 700;
+}
+
+/* Main card */
+.reddit-card {
+	border-radius: 18px;
+	padding: 18px 18px 14px 18px;
+	border: 1px solid rgba(255, 255, 255, 0.08);
+	background: rgba(255, 255, 255, 0.04);
+	backdrop-filter: blur(10px);
+	box-shadow: 0 10px 26px rgba(0, 0, 0, 0.25);
+}
+
+/* Card top */
+.reddit-card-top {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 12px;
+	margin-bottom: 10px;
+}
+
+.reddit-card-title {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	font-weight: 700;
+	font-size: 1.05rem;
+}
+
+.reddit-icon {
+	font-size: 1.25rem;
+}
+
+/* Badge (global sentiment) */
+.reddit-badge {
+	padding: 6px 10px;
+	border-radius: 999px;
+	font-size: 0.85rem;
+	font-weight: 700;
+	border: 1px solid rgba(255, 255, 255, 0.14);
+	background: rgba(255, 255, 255, 0.06);
+}
+
+/* Optional color hints by sentiment */
+.reddit-badge.bullish {
+	border-color: rgba(0, 255, 163, 0.35);
+	background: rgba(0, 255, 163, 0.08);
+}
+
+.reddit-badge.bearish {
+	border-color: rgba(255, 77, 109, 0.35);
+	background: rgba(255, 77, 109, 0.08);
+}
+
+.reddit-badge.neutral {
+	border-color: rgba(255, 255, 255, 0.16);
+	background: rgba(255, 255, 255, 0.06);
+}
+
+/* Stats row */
+.reddit-stats {
+	opacity: 0.85;
+	font-size: 0.95rem;
+	line-height: 1.5;
+}
+
+.reddit-stats b {
+	opacity: 1;
+}
+
+/* Divider */
+.reddit-divider {
+	margin: 14px 0;
+	height: 1px;
+	background: rgba(255, 255, 255, 0.10);
+	border: 0;
+}
+
+/* Posts list */
+.reddit-posts {
+	display: grid;
+	gap: 14px;
+	margin-top: 10px;
+}
+
+.reddit-post {
+	padding: 10px 12px;
+	border-radius: 14px;
+	border: 1px solid rgba(255, 255, 255, 0.08);
+	background: rgba(0, 0, 0, 0.18);
+}
+
+.reddit-post-meta {
+	font-size: 0.78rem;
+	opacity: 0.7;
+	margin-bottom: 6px;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 10px;
+}
+
+.reddit-post a {
+	color: inherit;
+	text-decoration: none;
+}
+
+.reddit-post a:hover {
+	text-decoration: underline;
+}
+
+.reddit-post-title {
+	font-weight: 650;
+	line-height: 1.25;
+}
+
+/* Sentiment label chips inside posts */
+.reddit-chip {
+	display: inline-flex;
+	align-items: center;
+	gap: 6px;
+	padding: 3px 8px;
+	border-radius: 999px;
+	font-size: 0.75rem;
+	font-weight: 700;
+	border: 1px solid rgba(255, 255, 255, 0.12);
+	background: rgba(255, 255, 255, 0.06);
+}
+
+.reddit-chip.bullish {
+	border-color: rgba(0, 255, 163, 0.35);
+	background: rgba(0, 255, 163, 0.08);
+}
+
+.reddit-chip.bearish {
+	border-color: rgba(255, 77, 109, 0.35);
+	background: rgba(255, 77, 109, 0.08);
+}
+
+.reddit-chip.neutral {
+	border-color: rgba(255, 255, 255, 0.16);
+	background: rgba(255, 255, 255, 0.06);
+}
+
+/* Footer buttons */
+.reddit-actions {
+	margin-top: 16px;
+	display: flex;
+	gap: 12px;
+	flex-wrap: wrap;
+}
+
+/* Buttons (match your Predict buttons vibe) */
+.reddit-btn {
+	border: 0;
+	cursor: pointer;
+	padding: 12px 14px;
+	border-radius: 12px;
+	font-weight: 700;
+	font-size: 0.95rem;
+	transition: transform 0.08s ease, opacity 0.15s ease;
+}
+
+.reddit-btn:active {
+	transform: translateY(1px);
+}
+
+.reddit-btn-back {
+	background: rgba(255, 255, 255, 0.08);
+	color: inherit;
+	border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.reddit-btn-back:hover {
+	opacity: 0.95;
+}
+
+/* “Purple” style similar to your btn-both */
+.reddit-btn-primary {
+	background: rgba(123, 91, 253, 0.95);
+	color: white;
+}
+
+.reddit-btn-primary:hover {
+	opacity: 0.95;
+}
+
+/* Loading / error */
+.reddit-state {
+	margin: 14px 0;
+	padding: 12px 14px;
+	border-radius: 12px;
+	border: 1px solid rgba(255, 255, 255, 0.10);
+	background: rgba(255, 255, 255, 0.04);
+	opacity: 0.9;
+}
+
+.reddit-error {
+	border-color: rgba(255, 77, 109, 0.35);
+	background: rgba(255, 77, 109, 0.08);
+}
+
+/* Responsive tweaks */
+@media (max-width: 600px) {
+	.reddit-predict-title {
+		font-size: 1.6rem;
+	}
+	.reddit-card {
+		padding: 14px;
+	}
+	.reddit-post {
+		padding: 10px;
+	}
+}
